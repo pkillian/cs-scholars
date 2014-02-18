@@ -46,14 +46,14 @@ module.exports = function (grunt) {
     },
     
     less: {
-      external: {
-        files: { /* (dest : src) */
-          '../src/tmp/bootstrap.max.css' : '../src/components/bootstrap/less/bootstrap.less'
-        }
-      },
+      // external: {
+      //   files: { /* (dest : src) */
+      //     '../src/tmp/bootstrap.max.css' : '../src/components/bootstrap/less/bootstrap.less'
+      //   }
+      // },
       scholars: {
         files: { /* (dest : src) */
-          '../src/tmp/ot.max.css' : '../src/less/index.less'
+          '../src/tmp/main.max.css' : '../src/less/main.less'
         },
         options: {
           paths: ['../src/less']
@@ -65,9 +65,9 @@ module.exports = function (grunt) {
     cssmin: {
       compress: {
         files: {
-          '../docroot/css/bootstrap.css': ['../src/tmp/*.css'],
-          '../docroot/css/select2.min.css': ['../src/components/select2/select2.css'],
-          "../docroot/css/ot.min.css": ["../src/tmp/ot.max.css"]
+          // '../docroot/css/bootstrap.css': ['../src/tmp/*.css'],
+          // '../docroot/css/select2.min.css': ['../src/components/select2/select2.css'],
+          "../docroot/css/main.min.css": ["../src/tmp/main.max.css"]
         }
       }
     },
@@ -90,7 +90,8 @@ module.exports = function (grunt) {
             expand: true,
             flatten: true,
             src: [
-              '../src/components/select2/select2.min.js'
+              '../src/components/angular/angular.min.js',
+              '../src/components/jquery/jquery.min.js'
             ],
             dest: '../docroot/js/',
             filter: 'isFile'
@@ -103,49 +104,32 @@ module.exports = function (grunt) {
             expand: true,
             flatten: true,
             src: [
-              '../src/components/angular-ui/build/angular-ui.min.css',
-              '../src/components/bootstrap-datepicker/css/datepicker.css',
               '../src/components/font-awesome/css/font-awesome.min.css',
-              '../src/components/animate.css/animate.min.css'
             ],
             dest: '../docroot/css/',
             filter: 'isFile'
           }
         ]
       },
-      select2: { // not a fan of where these files need to go
-        files: [
-          {
-            expand: true,
-            flatten: true,
-            src: [
-              '../src/components/select2/*.gif',
-              '../src/components/select2/*.png'
-            ],
-            dest: '../docroot/css/',
-            filter: 'isFile'
-          }
-        ]
-      },
-      img: {
-        files: [
-          {
-            expand: true,
-            flatten: true,
-            src: [
-              '../src/components/jquery.ui/themes/base/images/*'
-            ],
-            dest: '../docroot/images/',
-            filter: 'isFile'
-          }
-        ]
-      },
+      // img: {
+      //   files: [
+      //     {
+      //       expand: true,
+      //       flatten: true,
+      //       src: [
+      //         '../src/components/jquery.ui/themes/base/images/*'
+      //       ],
+      //       dest: '../docroot/images/',
+      //       filter: 'isFile'
+      //     }
+      //   ]
+      // },
       font: {
         files: [
           {
             expand: true,
             flatten: true,
-            src: ['../src/components/font-awesome/font/*'],
+            src: ['../src/components/font-awesome/fonts/*'],
             dest: '../docroot/font/',
             filter: 'isFile'
           }
