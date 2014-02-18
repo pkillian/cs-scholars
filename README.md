@@ -1,7 +1,9 @@
 # CS Scholars
-## University of California, Berkeley
+### University of California, Berkeley
 
-# Under Development
+## Under Development
+
+Codebase is under active and early stages of development, and is not ready for deployment what-so-ever!
 
 ## Build Workflow
 
