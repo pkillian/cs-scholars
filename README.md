@@ -10,5 +10,5 @@ Codebase is under active and early stages of development, and is not ready for d
 ### Dependencies
 - NPM (`brew install npm`)
 - Bower (`npm install -g bower`)
-- Grunt (`npm install -g grunt`)
+- Grunt (`npm install -g grunt grunt-cli`)
 
