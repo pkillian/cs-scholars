@@ -30,8 +30,8 @@ module.exports = function (grunt) {
     // minify the angularjs files (shouldn't be done via uglifyjs)
     ngmin: {
       scholars: {
-        src: ['../src/js/cs-scholars.js', '../src/js/**/*.js'],
-        dest: '../src/tmp/cs-scholars.ngmin.js'
+        src: ['../src/js/scholars.app.js', '../src/js/**/*.js'],
+        dest: '../src/tmp/scholars.app.ngmin.js'
       }
     },
 
@@ -40,8 +40,8 @@ module.exports = function (grunt) {
         banner: '/* generated: <%= grunt.template.today("yyyy-mm-dd @ HH:MM:ss") %> */\n'
       },
       scholars: {
-        src: ['../src/tmp/cs-scholars.ngmin.js'],
-        dest: '../docroot/js/cs-scholars.min.js'
+        src: ['../src/tmp/scholars.app.ngmin.js'],
+        dest: '../docroot/js/scholars.min.js'
       }
     },
     
@@ -53,7 +53,7 @@ module.exports = function (grunt) {
       // },
       scholars: {
         files: { /* (dest : src) */
-          '../src/tmp/main.max.css' : '../src/less/main.less'
+          '../src/tmp/main-light.max.css' : '../src/less/theme-light.less'
         },
         options: {
           paths: ['../src/less']
@@ -65,9 +65,7 @@ module.exports = function (grunt) {
     cssmin: {
       compress: {
         files: {
-          // '../docroot/css/bootstrap.css': ['../src/tmp/*.css'],
-          // '../docroot/css/select2.min.css': ['../src/components/select2/select2.css'],
-          "../docroot/css/main.min.css": ["../src/tmp/main.max.css"]
+          "../docroot/css/main-light.min.css": ["../src/tmp/main-light.max.css"]
         }
       }
     },
