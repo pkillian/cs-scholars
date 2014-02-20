@@ -1,23 +1,47 @@
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/main-light.min.css">
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="/js/angular.min.js"></script>
-    <script type="text/javascript" src="/js/cs-scholars.min.js"></script>
+    <script type="text/javascript" src="/js/scholars.min.js"></script>
   </head>
   <body>
+
+    <script type="text/javascript">
+      $(document).ready(Scholars.onReady);
+    </script>
+
     <div id="header">
       <div id="header-content">
-        <a href="http://eecs.berkeley.edu"><img src="/img/head-eecs-logo.gif" /></a>
+        <a href="http://eecs.berkeley.edu"><img id="header-logo" src="/img/head-eecs-logo.gif" /></a>
         <a href="/"><div class="header-button"><div>Home</div></div></a>
         <a href="/"><div class="header-button"><div>About</div></div></a>
         <a href="/"><div class="header-button"><div>Contact</div></div></a>
         <a href="/"><div class="header-button"><div>Donate</div></div></a>
+        <div id="header-nameplate">
+          <span id="header-nameplate-cs">CS </span>
+          <span id="header-nameplate-scholars">Scholars</span>
+        </div>
       </div>
     </div>
 
     <div id="wrapper">
       <div id="content" ng-view>
+        <div class="row-div">It works!</div>
+        <div class="row-container">
+          <div class="col-div">It works here too!</div>
+          <div class="col-div">And here!</div>
+        </div>
+        <div class="row-container">
+          <div class="col-div-thirds">Here one...</div>
+          <div class="col-div-thirds">...two...</div>
+          <div class="col-div-thirds">...and three!</div>
+        </div>
+        <div class="row-div">It works!</div>
+        <div class="row-container">
+          <div class="col-div">It works here too!</div>
+          <div class="col-div">And here!</div>
+        </div>
       </div>
     </div>
 
