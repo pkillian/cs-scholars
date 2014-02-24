@@ -91,3 +91,11 @@
 .no-padding() {
   padding: 0;
 }
+
+.transition(@properties: all, @time: 0.5s) {
+  -moz-transition:    @properties @time;    /* Firefox             */
+  -ms-transition:     @properties @time;    /* Firefox             */
+  -webkit-transition: @properties @time;    /* Opera               */
+  -o-transition:      @properties @time;    /* Chrome (and Safari) */
+  transition:         @properties @time;
+}

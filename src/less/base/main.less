@@ -1,26 +1,69 @@
-/* CSS styles */
+/* LESS constraints */
+/********************/
+
+@doc-width:                               960px;
+@doc-min-height:                          400px;
+
+@body-width:                              100%;
+
+@body-background-image:                   url('/img/bg-crossword.png');
+
+@header-height:                           60px;
+@header-width:                            100%;
+@header-button-height:                    @header-height;
+@header-button-min-width:                 60px;
+@header-margin-bottom:                    50px;
+@header-content-width:                    @doc-width;
+
+@header-background-color:                 @style-white-9-10ths;
+@header-border-color:                     @style-light-grey;
+@header-button-link-color:                @style-blue;
+@header-logo-background-color:            @style-blue;
+@header-shadow-color:                     @style-light-grey;
+@header-text-shadow-color:                @style-light-grey;
+
+@wrapper-width:                           @doc-width;
+@content-min-height:                      @doc-min-height;
+@content-width:                           @doc-width;
+@content-row-height:                      200px;
+@content-row-width:                       @content-width - 20px;
+@content-row-bg-width:                    @content-width - 40px;
+@content-col-height:                      200px;
+@content-col-width:                       (@content-row-width - 20px) / 2; 
+@content-col-thirds-width:                (@content-row-width - 40px) / 3;
+@content-col-bg-width:                    (@content-row-bg-width - 20px) / 2;
+@content-col-bg-thirds-width:             (@content-row-bg-width - 40px) / 3;
+
+@content-div-background-color:            @style-black-1-3rd;
+@content-inner-div-background-color:      @style-blue-1-3rd;
+@content-text-color:                      @style-blue;
+
+@footer-height:                           480px;
+@footer-width:                            100%;
+@footer-content-height:                   280px;
+@footer-content-width:                    @doc-width;
+@footer-content-col-height:               @footer-content-height;
+@footer-content-col-thirds-width:         (@footer-content-width - 40px) / 3;
+
+@footer-background-image:                 url('/img/bg-dirty-old-shirt.png');
+@footer-div-background-color:             @style-white-1-3rd;
+@footer-shadow-color:                     darken(@style-grey, 5%);
+
+@footer-bottom-height:                    160px;
+@footer-bottom-content-height:            @footer-bottom-height - 40px;
+@footer-bottom-content-width:             @doc-width;
+@footer-bottom-content-div-height:        120px;
+@footer-bottom-content-div-thirds-width:  (@footer-bottom-content-width - 40px) / 3;
+
+@footer-bottom-background-image:          url('/img/bg-noisy-net.png');
+
+
+/* CSS Styles */
 /**************/
 
-
-@body-background-image:         url('/img/bg-crossword.png');
-
-@header-background-color:       @style-white-9-10ths;
-@header-border-color:           @style-light-grey;
-@header-button-link-color:      @style-blue;
-@header-logo-background-color:  @style-blue;
-@header-shadow-color:           @style-light-grey;
-@header-text-shadow-color:      @style-light-grey;
-
-@content-div-background-color:  @style-black-1-3rd;
-@content-text-color:            @style-blue;
-
-@footer-background-image:       url('/img/bg-dirty-old-shirt.png');
-@footer-shadow-color:           darken(@style-grey, 5%);
-
-
 html {
-  min-width:  960px;
-  min-height: 400px;
+  min-width:  @doc-width;
+  min-height: @doc-min-height;
 
   .no-margin();
   .no-padding();
@@ -30,7 +73,7 @@ html {
 }
 
 body {
-  min-width:  960px;
+  min-width:  @body-width;
 
   .no-margin();
   .no-padding();
@@ -50,13 +93,13 @@ body {
 
 #header {
   position: fixed;
+  height:   @header-height;
+  width:    @header-width;
   z-index:  500;
-  height:   60px;
-  width:    100%;
 
   overflow: hidden;
 
-  margin-bottom: 50px;
+  margin-bottom: ;
 
   background-color: @header-background-color;
 
@@ -67,7 +110,7 @@ body {
 }
 
 #header-content {
-  width:  960px;
+  width:  @doc-width;
   margin: 0 auto;
 
   text-shadow:  0 1px @header-text-shadow-color;
@@ -76,18 +119,16 @@ body {
     color: @header-button-link-color;
   }
 
-  img {
+  #header-logo {
     float:    left;
     padding:  5px 10px;
-  }
 
-  #header-logo {
     background-color: @header-logo-background-color;
   }
 
   #header-nameplate {
-    float: right;
-    padding: 18px 0;
+    float:    left;
+    padding:  18px 0;
 
     font-family:  'Dancing Script', sans-serif;
     font-weight:  medium;
@@ -97,13 +138,17 @@ body {
     text-align:   center;
   }
 
+  #header-rightlinks {
+    float: right;
+  }
+
   .header-button {
-    height: 60px;
-    min-width: 60px;
+    height:     @header-button-height;
+    min-width:  @header-button-min-width;
 
     float: left;
 
-    .border-right(@line-color: @header-border-color, @line-width: 1px);
+    .border-left(@line-color: @header-border-color, @line-width: 1px);
 
     div {      
       margin:   20px 0;
@@ -120,8 +165,8 @@ body {
 }
 
 #wrapper {
-  width:  960px;
   height: auto;
+  width:  @wrapper-width;
 
   margin:   0 auto;
   padding:  0 12px 12px 12px;
@@ -130,8 +175,8 @@ body {
 }
 
 #content {
-  min-height: 650px;
-  width:  960px;
+  min-height: @content-min-height;
+  width:      @content-width;
 
   margin: 90px 0 0 0;
 
@@ -148,53 +193,106 @@ body {
     background-color: @content-div-background-color;
   }
 
-  .row-container {
-    height: 200px;
-    width:  100%;
+  .row-div {
+    height: @content-row-height;
+    width:  @content-row-width;
 
-    margin-top: 20px;
+    margin: 20px 10px 0 10px;
+  }
+
+  .row-container {
+    height: @content-row-height;
+    width:  @content-row-width;
+
+    margin: 20px 10px 0 10px;
 
     display: inline-block;
+
     .no-background();
+
+    .col-div {
+      height: @content-col-height;
+      width:  @content-col-width;
+
+      float: left;
+    }
+
+    .col-div:first-child {
+      margin-right: 20px;
+    }
+
+    .col-div-thirds {
+      height: @content-col-height;
+      width:  @content-col-thirds-width;
+
+      float: left;
+    }
+
+    .col-div-thirds {
+      margin-right: 20px;
+    }
+
+    .col-div-thirds:last-child {
+      margin: 0;
+    }
+
   }
 
-  .row-div {
-    height: 200px;
-    width:  100%;
+  .row-container-bg {
+    height: auto;
+    width:  @content-row-bg-width;
 
-    margin-top: 20px;
+    padding: 10px;
+
+    background-color: @content-div-background-color;
+
+    .col-div {
+      height: @content-col-height;
+      width:  @content-col-bg-width;
+
+      background-color: @content-inner-div-background-color;
+    }
+
+    .col-div-thirds {
+      height: @content-col-height;
+      width:  @content-col-bg-thirds-width;
+
+      background-color: @content-inner-div-background-color;
+    }
   }
 
-  .col-div {
-    height: 200px;
-    width:  470px;
+  .row-block {
+    .row-container-bg();
 
-    float: left;
-  }
+    margin: 20px 10px 0 10px;
 
-  .col-div:first-child {
-    margin-right: 20px;
-  }
+    .row-container {
+      width:  @doc-width - 40px;
 
-  .col-div-thirds {
-    height: 200px;
-    width:  306px;
+      margin: 0 0 20px 0;
+    }
 
-    float: left;
-  }
+    .row-container:last-child {
+      margin: 0;
+    }
 
-  .col-div-thirds:nth-child(2) {
-    width:  307px;
-  }
+    .row-div {
+      width:  @doc-width - 40px;
 
-  .col-div-thirds:first-child,
-  .col-div-thirds:nth-child(2) {
-    margin-right: 20px;
+      margin: 0 0 20px 0;
+
+      background-color: @content-inner-div-background-color;
+    }
+
+    .row-div:last-child {
+      margin: 0;
+    }
   }
 }
 
 #footer {
-  height: 160px;
+  height: @footer-height;
+  width:  @footer-width;
 
   margin-top: 40px;
 
@@ -205,9 +303,62 @@ body {
 }
 
 #footer-content {
-  width:  960px;
-  height: 100%;
+  height: @footer-content-height;
+  width:  @footer-content-width;
 
-  margin: 0 auto;
+  padding-top: 20px;
+  margin: 0 auto 20px auto;
+
+  div {
+    .border-radius(4px);
+    float: left;
+  }
+
+  .col-div-thirds {
+    height: @footer-content-col-height;
+    width:  @footer-content-col-thirds-width;
+
+    margin-right: 20px;
+
+    background-color: @footer-div-background-color;
+  }
+
+  .col-div-thirds:last-child {
+    margin: 0;
+  }
 }
 
+#footer-bottom {
+  height: @footer-bottom-height;
+
+  // background-color: @footer-bottom-background-color;
+  background-image: @footer-bottom-background-image;
+
+  .box-shadow-top(@h-shad: inset; @v-shad: 0; @blur: 2px; @spread: 14px; @shad-color: @style-black-2-3rds);
+}
+
+#footer-bottom-content {
+  height: @footer-bottom-content-height;
+  width:  @footer-bottom-content-width;
+
+  padding-top: 20px;
+  margin: 0 auto 20px auto;
+
+  div {
+    .border-radius(4px);
+    float: left;
+  }
+
+  .col-div-thirds {
+    height: @footer-bottom-content-div-height;
+    width:  @footer-bottom-content-div-thirds-width;
+
+    margin-right: 20px;
+
+    background-color: @footer-div-background-color;
+  }
+
+  .col-div-thirds:last-child {
+    margin: 0;
+  }
+}
