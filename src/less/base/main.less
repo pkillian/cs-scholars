@@ -27,7 +27,7 @@
 @wrapper-width:                           @doc-width;
 @content-min-height:                      @doc-min-height;
 @content-width:                           @doc-width;
-@content-row-height:                      200px;
+@content-row-height:                      auto;
 @content-row-width:                       @content-width - 20px;
 @content-row-bg-width:                    @content-width - 40px;
 @content-col-height:                      200px;
@@ -127,8 +127,9 @@ a {
   }
 
   #header-logo {
-    float:    left;
-    padding:  5px 10px;
+    float:        left;
+    margin-left:  15px;
+    padding:      5px 10px;
 
     background-color: @header-logo-background-color;
   }
@@ -157,9 +158,9 @@ a {
 
     //.border-left(@line-color: @header-border-color, @line-width: 1px);
 
-    div {      
+    .button-div {
       margin:   20px 0;
-      padding:  0 30px;
+      padding:  0 15px;
 
       font-family:  'Maven Pro', sans-serif;
       font-weight:  medium;
@@ -168,6 +169,7 @@ a {
       line-height:  20px;
       text-align:   center;
     }
+
   }
 }
 
