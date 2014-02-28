@@ -30,35 +30,18 @@
 
     <div id="wrapper">
       <div id="content" ng-view>
-        <div class="row-div">It works!</div>
-        <div class="row-container">
-          <div class="col-div">It works here too!</div>
-          <div class="col-div">And here!</div>
-        </div>
-        <div class="row-container">
-          <div class="col-div-thirds">Here one...</div>
-          <div class="col-div-thirds">...two...</div>
-          <div class="col-div-thirds">...and three!</div>
-        </div>
-        <div class="row-container row-container-bg">
-          <div class="col-div">It works here too!</div>
-          <div class="col-div">And here!</div>
-        </div>
-        <div class="row-container row-container-bg">
-          <div class="col-div-thirds">Here one...</div>
-          <div class="col-div-thirds">...two...</div>
-          <div class="col-div-thirds">...and three!</div>
-        </div>
-        <div class="row-block">
-          <div class="row-div">It works!</div>
-          <div class="row-container">
-            <div class="col-div">It works here too!</div>
-            <div class="col-div">And here!</div>
+        <div id="photo-scroller" class="row-div photo-scroller">
+          <div class="photo-scroller-div default">
+            <img class="photo-scroller-image" src="/img/photos/edison.jpg" />
+            <div class="photo-scroller-caption">
+              <div>Insert caption here!</div>
+            </div>
           </div>
-          <div class="row-container">
-            <div class="col-div-thirds">Here one...</div>
-            <div class="col-div-thirds">...two...</div>
-            <div class="col-div-thirds">...and three!</div>
+          <div class="photo-scroller-div">
+            <img class="photo-scroller-image" src="/img/photos/nserc_group1.jpg" />
+            <div class="photo-scroller-caption">
+              <div>Another test caption!</div>
+            </div>
           </div>
         </div>
       </div>

@@ -9,6 +9,7 @@ var Scholars = Scholars || {};
     this.mousedOver = false;
     this.headerShown = true;
     this.headerHeight = 60;
+    this.photoScrollers = {};
 
     this.bindHeaderMouseOver = function(ev) {
         that.mousedOver = (ev.clientY <= that.headerHeight + 20);
@@ -68,6 +69,81 @@ var Scholars = Scholars || {};
     this.onReady = function() {
         $(window).scroll(that.bindHeaderScroll);
         $(window).mousemove(that.bindHeaderMouseOver);
+    };
+
+    this.photoScroller = function(idNum) {
+
+        // Caching of photoScroller objects
+        if (!idNum && that.photoScrollers['default']) {
+            return that.photoScrollers['default'];
+        } else if (that.photoScrollers[idNum]) {
+            return that.photoScrollers[idNum];
+        }
+
+        // Not returned from cache? Init a new obj...
+        var scrollObj = {};
+
+        // If an ID is given, get that specific div
+        if (idNum) {
+            console.log('#photo-scroller-' + idNum);
+            scrollObj.$scrollerContainer = $('#photo-scroller-' + idNum);
+
+        // else, default to the normal ID pattern
+        } else {
+            scrollObj.$scrollerContainer = $('#photo-scroller');
+        }
+
+        // Get the number of total photos and the current photo (default 0)
+        scrollObj.numPhotos = scrollObj.$scrollerContainer.children().length;
+        scrollObj.currentPhotoNum = 0;
+
+        // Get inner photo+caption div
+        scrollObj.$getDiv = function(id) {
+            return $(this.$scrollerContainer.children()[id]);
+        };
+
+        // Get the current photo+caption div
+        scrollObj.$currentDiv = function() {
+            return this.$getDiv(this.currentPhotoNum);
+        };
+
+        scrollObj.fadeFromTo = function($current, $next, nextNum) {
+
+            var completeFn = function(duration) {
+                $next.fadeIn(duration);
+                scrollObj.currentPhotoNum = nextNum;
+            };
+
+            // Fade the current div out, then call completeFn
+            $current.fadeOut('slow', completeFn('slow'));
+        };
+
+        // Fade from current photo to the next photo
+        scrollObj.fadeToNext = function() {
+            var $current = this.$currentDiv();
+            var nextNum  = (this.currentPhotoNum + 1) % this.numPhotos;
+            var $next    = this.$getDiv(nextNum);
+
+            this.fadeFromTo($current, $next, nextNum);
+        };
+
+        // Fade from current photo to the previous photo
+        scrollObj.fadeToPrev = function() {
+            var $current = this.$currentDiv();
+            var nextNum  = this.currentPhotoNum - 1;
+
+            if (nextNum < 0) {
+                nextNum = this.numPhotos - 1;
+            }
+
+            var $next = this.$getDiv(nextNum);
+
+            this.fadeFromTo($current, $next, nextNum);
+        };
+
+        // Sets object into the cache for later retrieval
+        that.photoScrollers[idNum] = scrollObj;
+        return scrollObj;
     };
 
 }).call(Scholars, Scholars, jQuery, window, document);

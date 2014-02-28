@@ -200,6 +200,10 @@ a {
 
     .border-radius(4px);
     background-color: @content-div-background-color;
+
+    img {
+      .border-radius(4px);
+    }
   }
 
   .row-div {
@@ -296,6 +300,70 @@ a {
     .row-div:last-child {
       margin: 0;
     }
+  }
+
+  .photo-scroller {
+    overflow: hidden;
+    position: relative;
+
+    min-height: 300px;
+
+    .photo-scroller-div {
+
+      display: none;
+
+      .photo-scroller-image {
+        position: absolute;
+        top:  0;
+        left: 0;
+
+        height: 300px;
+        width: 100%;
+      }
+
+      .photo-scroller-caption {
+        position: absolute;
+        bottom: 0;
+        left:   0;
+
+        height: auto;
+        width:  100%;
+
+        background-color: @style-black-4-5ths;
+        color:            @style-white-4-5ths;
+
+        text-align: center;
+        font-size:  14pt;
+
+        div {
+          .no-background();
+          color:      inherit;
+          font-size:  inherit;
+        }
+
+        div:first-child {
+          margin-top: 10px;
+        }
+
+        div:last-child {
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    .photo-scroller-div.default {
+
+      display: block;
+
+      .photo-scroller-image {
+        z-index: 99;
+      }
+
+      .photo-scroller-caption {
+        z-index: 100;
+      }
+    }
+
   }
 }
 
