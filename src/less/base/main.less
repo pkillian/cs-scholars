@@ -35,6 +35,7 @@
 @content-col-thirds-width:                (@content-row-width - 40px) / 3;
 @content-col-bg-width:                    (@content-row-bg-width - 20px) / 2;
 @content-col-bg-thirds-width:             (@content-row-bg-width - 40px) / 3;
+@content-vertical-margin:                 60px;
 
 @content-div-background-color:            @style-black-1-3rd;
 @content-inner-div-background-color:      @style-blue-1-3rd;
@@ -46,6 +47,7 @@
 @footer-content-width:                    @doc-width;
 @footer-content-col-height:               @footer-content-height;
 @footer-content-col-thirds-width:         (@footer-content-width - 40px) / 3;
+@footer-top-margin:                       @content-vertical-margin;
 
 @footer-background-image:                 url('/img/bg-dirty-old-shirt.png');
 @footer-div-background-color:             @style-white-1-3rd;
@@ -187,7 +189,7 @@ a {
   min-height: @content-min-height;
   width:      @content-width;
 
-  margin: 90px 0 0 0;
+  margin: (@header-height + @content-vertical-margin) 0 0 0;
 
   div {
     text-align: center;
@@ -371,7 +373,7 @@ a {
   height: @footer-height;
   width:  @footer-width;
 
-  margin-top: 40px;
+  margin-top: @footer-top-margin;
 
   background-repeat: repeat;
   background-image:  @footer-background-image;
