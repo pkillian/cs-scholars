@@ -41,6 +41,14 @@
 @content-inner-div-background-color:      @style-blue-1-3rd;
 @content-text-color:                      @style-blue;
 
+@photo-scroller-height:                   300px;
+@photo-scroller-width:                    100%;
+
+@photo-scroller-control-height:           72px;
+@photo-scroller-control-width:            100%;
+@photo-scroller-control-top:              (@photo-scroller-height - @photo-scroller-control-height) / 2;
+@photo-scroller-control-bottom:           (@photo-scroller-height - @photo-scroller-control-height) / 2;
+
 @footer-height:                           480px;
 @footer-width:                            100%;
 @footer-content-height:                   280px;
@@ -308,16 +316,16 @@ a {
     overflow: hidden;
     position: relative;
 
-    min-height: 300px;
+    height: @photo-scroller-height;
 
     .photo-scroller-control {
       position: absolute;
 
-      top:    114px;
-      bottom: 114px;
+      top:    @photo-scroller-control-top;
+      bottom: @photo-scroller-control-bottom;
 
-      height: 72px;
-      width:  100%;
+      height: @photo-scroller-control-height;
+      width:  @photo-scroller-control-width;
 
       z-index: 200;
 
@@ -333,8 +341,8 @@ a {
 
       .photo-scroller-control-left,
       .photo-scroller-control-right {
-        height: 72px;
-        width:  72px;
+        height: @photo-scroller-control-height;
+        width:  @photo-scroller-control-height;
 
         .no-background();
 
@@ -355,8 +363,8 @@ a {
         top:  0;
         left: 0;
 
-        height: 300px;
-        width: 100%;
+        height: @photo-scroller-height;
+        width:  @photo-scroller-width;
       }
 
       .photo-scroller-caption {
