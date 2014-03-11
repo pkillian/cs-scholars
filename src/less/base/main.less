@@ -130,8 +130,6 @@ a {
   width:  @doc-width;
   margin: 0 auto;
 
-  text-shadow:  0 1px @header-text-shadow-color;
-
   a, a:visited {
     color: @header-button-link-color;
   }
@@ -146,18 +144,31 @@ a {
 
   #header-nameplate {
     float:    left;
-    padding:  18px 0;
+    padding:  13px 0;
 
-    font-family:  'Dancing Script', sans-serif;
-    font-weight:  medium;
-    font-size:    22pt;
+    #header-nameplate-csscholars {
+      text-shadow:  0 1px @header-text-shadow-color;
+      
+      font-family:  'Dancing Script', sans-serif;
+      font-weight:  700;
+      font-size:    22pt;
 
-    line-height:  24px;
-    text-align:   center;
+      line-height:  24px;
+    }
+
+    #header-nameplate-ucb {
+      font-family: 'Maven Pro', serif;
+      font-weight: 500;
+      font-size: 8pt;
+
+      line-height: 10px;
+    }
   }
 
   #header-rightlinks {
     float: right;
+
+    text-shadow:  0 1px @header-text-shadow-color;
   }
 
   .header-button {
