@@ -4,7 +4,7 @@
 @doc-width:                               960px;
 @doc-min-height:                          400px;
 
-@body-width:                              100%;
+@body-width:                              960px;
 
 @body-background-image:                   url('/img/bg-crossword.png');
 
@@ -12,6 +12,7 @@
 
 @header-height:                           60px;
 @header-width:                            100%;
+@header-min-width:                        1000px;
 @header-button-height:                    @header-height;
 @header-button-min-width:                 60px;
 @header-margin-bottom:                    50px;
@@ -50,7 +51,7 @@
 @photo-scroller-control-bottom:           (@photo-scroller-height - @photo-scroller-control-height) / 2;
 
 @footer-height:                           480px;
-@footer-width:                            100%;
+@footer-min-width:                        @doc-width + 25px;
 @footer-content-height:                   280px;
 @footer-content-width:                    @doc-width;
 @footer-content-col-height:               @footer-content-height;
@@ -101,6 +102,8 @@ body {
   font-size: 100%;
   font-family: inherit;
   vertical-align: baseline;
+
+  overflow: auto;
 }
 
 a {
@@ -109,10 +112,11 @@ a {
 }
 
 #header {
-  position: fixed;
-  height:   @header-height;
-  width:    @header-width;
-  z-index:  500;
+  position:   fixed;
+  height:     @header-height;
+  width:      @header-width;
+  min-width:  @header-min-width;
+  z-index:    500;
 
   overflow: hidden;
 
@@ -425,8 +429,8 @@ a {
 }
 
 #footer {
-  height: @footer-height;
-  width:  @footer-width;
+  height:     @footer-height;
+  min-width:  @footer-min-width;
 
   margin-top: @footer-top-margin;
 
