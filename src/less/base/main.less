@@ -59,16 +59,25 @@
 @footer-top-margin:                       @content-vertical-margin;
 
 @footer-background-image:                 url('/img/bg-dirty-old-shirt.png');
-@footer-div-background-color:             @style-white-1-3rd;
-@footer-shadow-color:                     darken(@style-grey, 5%);
+@footer-shadow-color:                     darken(@style-light-grey, 5%);
 
-@footer-bottom-height:                    160px;
-@footer-bottom-content-height:            @footer-bottom-height - 40px;
-@footer-bottom-content-width:             @doc-width;
-@footer-bottom-content-div-height:        120px;
-@footer-bottom-content-div-thirds-width:  (@footer-bottom-content-width - 40px) / 3;
+@footer-thin-height:                      160px;
+@footer-thin-content-height:              @footer-thin-height - 40px;
+@footer-thin-content-width:               @doc-width;
+@footer-thin-content-col-height:          80px;
+@footer-thin-content-col-width:           ((@footer-thin-content-width - 20px) / 2) - 20px;
+@footer-thin-content-col-thirds-width:    ((@footer-thin-content-width - 40px) / 3) - 20px;
+@footer-thin-photo-height:                @footer-thin-content-col-height;
+@footer-thin-photo-width:                 @footer-thin-photo-height;
+@footer-thin-photo-caption-width:         @footer-thin-content-col-thirds-width - @footer-thin-photo-width - 10px;
 
-@footer-bottom-background-image:          url('/img/bg-noisy-net.png');
+@footer-thin-background-color:            @style-black-1-3rd;
+@footer-thin-background-image:            url('/img/bg-crossword.png');
+@footer-thin-col-background-color:        @style-black-1-10th;
+
+@footer-content-col-background-color:     @style-white-1-3rd;
+@footer-content-shadow-color:             darken(@style-light-grey, 5%);
+
 
 
 /* CSS Styles */
@@ -153,7 +162,7 @@ a {
     #header-nameplate-csscholars {
       text-shadow:  0 1px @header-text-shadow-color;
       
-      font-family:  'Dancing Script', sans-serif;
+      font-family:  'Dancing Script', serif;
       font-weight:  700;
       font-size:    22pt;
 
@@ -161,7 +170,7 @@ a {
     }
 
     #header-nameplate-ucb {
-      font-family: 'Maven Pro', serif;
+      font-family: 'Maven Pro', sans-serif;
       font-weight: 500;
       font-size: 8pt;
 
@@ -458,7 +467,7 @@ a {
 
     margin-right: 20px;
 
-    background-color: @footer-div-background-color;
+    background-color: @footer-content-col-background-color;
   }
 
   .col-div-thirds:last-child {
@@ -466,37 +475,120 @@ a {
   }
 }
 
-#footer-bottom {
-  height: @footer-bottom-height;
+#footer-thin {
+  height: @footer-thin-height;
 
-  // background-color: @footer-bottom-background-color;
-  background-image: @footer-bottom-background-image;
+  background-image: @footer-thin-background-image;
 
-  .box-shadow-top(@h-shad: inset; @v-shad: 0; @blur: 2px; @spread: 14px; @shad-color: @style-black-2-3rds);
+  //.box-shadow-top(@h-shad: inset; @v-shad: 0; @blur: 2px; @spread: 14px; @shad-color: @style-black-2-3rds);
+
+  .overlay {
+    height: @footer-thin-height;
+    width:  100%;
+
+    z-index: 2;
+
+    background-color: @footer-thin-background-color;
+  }
 }
 
-#footer-bottom-content {
-  height: @footer-bottom-content-height;
-  width:  @footer-bottom-content-width;
+#footer-thin-content {
+  height: @footer-thin-content-height;
+  width:  @footer-thin-content-width;
 
   padding-top: 20px;
   margin: 0 auto 20px auto;
 
   div {
-    .border-radius(4px);
+    padding: 10px;
+
     float: left;
+
+    .border-radius(4px);
+  }
+
+  .col-div {
+    height: @footer-thin-content-col-height;
+    width:  @footer-thin-content-col-width;
+
+    float: left;
+
+    background-color: @footer-thin-col-background-color;
+  }
+
+  .col-div:first-child {
+    margin-right: 20px;
   }
 
   .col-div-thirds {
-    height: @footer-bottom-content-div-height;
-    width:  @footer-bottom-content-div-thirds-width;
+    height: @footer-thin-content-col-height;
+    width:  @footer-thin-content-col-thirds-width;
 
     margin-right: 20px;
 
-    background-color: @footer-div-background-color;
+    background-color: @footer-thin-col-background-color;
   }
 
   .col-div-thirds:last-child {
     margin: 0;
+  }
+
+  .photo-quote {
+    .no-margin();
+    .no-padding();
+
+    font-family: 'Maven Pro', sans-serif;
+    
+    position: relative;
+    float: left;
+
+    div {
+      .no-margin();
+      .no-padding();
+      .no-background();
+    }
+
+    .photo-quote-img {
+      height: @footer-thin-photo-height;
+      width:  @footer-thin-photo-width;
+
+      margin-right: 10px;
+
+      float: left;
+
+      .border-radius(@radius: 2px);
+    }
+
+    .photo-quote-caption {
+      width: @footer-thin-photo-caption-width;
+
+      margin-bottom: 5px;
+
+      float: left;
+
+      font-weight: 400;
+      font-size:   10pt;
+      line-height: 11px;
+    }
+
+    .photo-quote-name:before {
+      content: "- ";
+
+      font-weight: 400;
+      font-size:   11pt;
+      line-height: 11px;
+    }
+
+    .photo-quote-name {
+      width: auto;
+
+      position: absolute;
+      bottom: 0;
+      right: 0;
+
+      font-weight: 500;
+      font-size:   11pt;
+      line-height: 11px;
+    }
   }
 }
