@@ -129,7 +129,7 @@ module.exports = function (grunt) {
             expand: true,
             flatten: true,
             src: ['../src/components/font-awesome/fonts/*'],
-            dest: '../docroot/font/',
+            dest: '../docroot/fonts/',
             filter: 'isFile'
           }
         ]
