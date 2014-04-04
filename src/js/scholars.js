@@ -142,85 +142,107 @@ var Scholars = Scholars || {};
         return scrollObj;
     };
 
-    this.photoQuotes = function() {
-        var photoQuoteData = [
-            {
-                "name":     "Mona Lee",
-                "grade":    "Freshman",
-                "major":    "Computer Science and Cognitive Science",
-                "caption":  "It's very possible to feel alone and helpless in such a large class and an ostensibly daunting department, but thankfully I'll never know the feeling because of CS Scholars.",
-                "src":      "/img/quote-1.jpg"
-            },
-            {
-                "name":     "Ollie O'Donnell",
-                "grade":    "",
-                "major":    "",
-                "caption":  "The Scholars program has made me feel like I'm at the centre of the CS community at Berkeley, whereas I know others who feel like a drop in the ocean.",
-                "src":      "/img/quote-2.jpg"
-            },
-            {
-                "name":     "Karishma Mahesh Morabia",
-                "grade":    "",
-                "major":    "",
-                "caption":  "CS Scholars provides me with support and learning opportunities that I would not have received otherwise. CS Scholars helps make me feel like I am not just another person lost in the crowd.",
-                "src":      "/img/quote-3.jpg"
-            },
-            {
-                "name":     "Patricia Hernandez",
-                "grade":    "",
-                "major":    "",
-                "caption":  "CS Scholars has given me a support system.",
-                "src":      "/img/quote-4.jpg"
-            },
-            {
-                "name":     "Doris Lee",
-                "grade":    "",
-                "major":    "",
-                "caption":  "It was really great having this opportunity to meet other CS students who are interested in discussing similar CS-related topics in seminar.",
-                "src":      "/img/quote-5.jpg"
-            },
-            {
-                "name":     "Huirong (Ronnie) Zhu",
-                "grade":    "",
-                "major":    "",
-                "caption":  "It is really to cool to work with so many cool friends who share the same cool interest!",
-                "src":      "/img/quote-6.jpg"
-            },
-            {
-                "name":     "Tara Rezvani",
-                "grade":    "",
-                "major":    "",
-                "caption":  "The weekly CS Scholars discussion sections are a great way to get a new perspective on CS as a field in the Berkeley community and the Bay Area as a whole.",
-                "src":      "/img/quote-7.jpg"
-            },
-            {
-                "name":     "Meg Holtzinger",
-                "grade":    "",
-                "major":    "",
-                "caption":  "I have made connections on a more personal level with many of my fellow cohort members, which has allowed me to more effectively discuss my ideas, collaborate, study, and grow in the field of CS.",
-                "src":      "/img/quote-8.jpg"
-            },
-            {
-                "name":     "Sebastian Shanus",
-                "grade":    "",
-                "major":    "",
-                "caption":  "Being a part of the CS Scholars has been incredibly rewarding in helping me prepare to explore fun programming projects outside of the classroom and develop close friendships with other computer science students.",
-                "src":      "/img/quote-9.jpg"
-            },
-            {
-                "name":     "Jessica Yanling Zhuge",
-                "grade":    "",
-                "major":    "",
-                "caption":  "CS Scholars, above all else, has made me realize that despite the situation, there will always be people willing to assist each other through whatever endeavors pursued.",
-                "src":      "/img/quote-10.jpg"
-            }
-        ];
+    this.photoQuoteData = [
+        {
+            "name":     "Mona Lee",
+            "grade":    "Freshman",
+            "major":    "Computer Science and Cognitive Science",
+            "caption":  "It's very possible to feel alone and helpless in such a large class and an ostensibly daunting department, but thankfully I'll never know the feeling because of CS Scholars.",
+            "src":      "/img/quote-1.jpg"
+        },
+        {
+            "name":     "Ollie O'Donnell",
+            "grade":    "",
+            "major":    "",
+            "caption":  "The Scholars program has made me feel like I'm at the centre of the CS community at Berkeley, whereas I know others who feel like a drop in the ocean.",
+            "src":      "/img/quote-2.jpg"
+        },
+        {
+            "name":     "Karishma Morabia",
+            "grade":    "",
+            "major":    "",
+            "caption":  "CS Scholars provides me with support and learning opportunities that I would not have received otherwise. It helps make me feel like I am not just another person lost in the crowd.",
+            "src":      "/img/quote-3.jpg"
+        },
+        {
+            "name":     "Patricia Hernandez",
+            "grade":    "",
+            "major":    "",
+            "caption":  "CS Scholars has given me a support system.",
+            "src":      "/img/quote-4.jpg"
+        },
+        {
+            "name":     "Doris Lee",
+            "grade":    "",
+            "major":    "",
+            "caption":  "It was really great having this opportunity to meet other CS students who are interested in discussing similar CS-related topics in seminar.",
+            "src":      "/img/quote-5.jpg"
+        },
+        {
+            "name":     "Huirong (Ronnie) Zhu",
+            "grade":    "",
+            "major":    "",
+            "caption":  "It is really to cool to work with so many cool friends who share the same cool interest!",
+            "src":      "/img/quote-6.jpg"
+        },
+        {
+            "name":     "Tara Rezvani",
+            "grade":    "",
+            "major":    "",
+            "caption":  "The weekly CS Scholars discussion sections are a great way to get a new perspective on CS as a field in the Berkeley community and the Bay Area as a whole.",
+            "src":      "/img/quote-7.jpg"
+        },
+        {
+            "name":     "Meg Holtzinger",
+            "grade":    "",
+            "major":    "",
+            "caption":  "I have made connections on a more personal level with many of my fellow cohort members, which has allowed me to more effectively discuss my ideas, collaborate, study, and grow in the field of CS.",
+            "src":      "/img/quote-8.jpg"
+        },
+        {
+            "name":     "Sebastian Shanus",
+            "grade":    "",
+            "major":    "",
+            "caption":  "Being a part of the CS Scholars has been incredibly rewarding in helping me prepare to explore fun programming projects outside of the classroom and develop close friendships with other computer science students.",
+            "src":      "/img/quote-9.jpg"
+        },
+        {
+            "name":     "Jessica Yanling Zhuge",
+            "grade":    "",
+            "major":    "",
+            "caption":  "CS Scholars, above all else, has made me realize that despite the situation, there will always be people willing to assist each other through whatever endeavors pursued.",
+            "src":      "/img/quote-10.jpg"
+        }
+    ];
 
+    this.currentQuotes = [1, 2, 5];
+
+    this.changeDataAndFadeIn = function($container, data) {
+        return function() {
+            $container.find('.photo-quote-img').attr('src', data['src']);
+            $container.find('.photo-quote-caption').html(data['caption']);
+            $container.find('.photo-quote-name').html(data['name']);
+
+            $container.fadeIn();
+        };
+    };
+
+    this.initQuotes = function() {
+        var $photoQuoteContainers = $('.photo-quote');
+
+        for (var i = 0; i < 3; i++) {
+            var $currentContainer = $($photoQuoteContainers.get(i));
+            var nextQuoteData = that.photoQuoteData[that.currentQuotes[i]];
+
+            $currentContainer.fadeOut("fast", that.changeDataAndFadeIn($currentContainer, nextQuoteData));
+        }
     };
 
     this.onReady = function() {
         $(window).scroll(that.bindHeaderScroll);
         $(window).mousemove(that.bindHeaderMouseOver);
+
+        that.initQuotes();
 
         var photoScroller = Scholars.photoScroller();
         photoScroller.$scrollerContainer.find('.photo-scroller-control-left').click(photoScroller.fadeToPrev);
