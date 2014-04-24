@@ -10,6 +10,11 @@ var Scholars = Scholars || {};
     this.headerShown = true;
     this.headerHeight = 60;
     this.photoScrollers = {};
+    this.random = Math.random;
+
+    // Ten second delay on quote swapping
+    this.quoteChangeDelay = 10000;
+    this.quoteNextChange = 0;
 
     this.bindHeaderMouseOver = function(ev) {
         that.mousedOver = (ev.clientY <= that.headerHeight + 20);
@@ -196,14 +201,14 @@ var Scholars = Scholars || {};
             "name":     "Meg Holtzinger",
             "grade":    "",
             "major":    "",
-            "caption":  "I have made connections on a more personal level with many of my fellow cohort members, which has allowed me to more effectively discuss my ideas, collaborate, study, and grow in the field of CS.",
+            "caption":  "I have made connections on a more personal level with many of my fellow members, which allows me to more effectively discuss ideas, collaborate, study, and grow in the field of CS.",
             "src":      "/img/quote-8.jpg"
         },
         {
             "name":     "Sebastian Shanus",
             "grade":    "",
             "major":    "",
-            "caption":  "Being a part of the CS Scholars has been incredibly rewarding in helping me prepare to explore fun programming projects outside of the classroom and develop close friendships with other computer science students.",
+            "caption":  "CS Scholars has been incredibly rewarding in helping me prepare to explore fun programming projects outside of the classroom and develop close friendships with other computer science students.",
             "src":      "/img/quote-9.jpg"
         },
         {
@@ -215,7 +220,7 @@ var Scholars = Scholars || {};
         }
     ];
 
-    this.currentQuotes = [1, 2, 5];
+    this.currentQuotes = [2, 1, 9];
 
     this.changeDataAndFadeIn = function($container, data) {
         return function() {
@@ -238,6 +243,44 @@ var Scholars = Scholars || {};
         }
     };
 
+    this.nextQuoteNumber = function() {
+        // Pick a random number between 0 and length of quote data
+        var randPick = Math.floor(that.random() * that.photoQuoteData.length);
+        var index = that.currentQuotes.indexOf(randPick);
+
+        while (index !== -1) {
+            randPick += 1;
+
+            if (randPick > that.currentQuotes.length) {
+                randPick = 0;
+            }
+
+            index = that.currentQuotes.indexOf(randPick);
+        }
+
+        return randPick;
+    };
+
+    this.changeOneQuote = function() {
+        var $photoQuoteContainers = $('.photo-quote');
+        var $quoteContainer = $($photoQuoteContainers.get(that.quoteNextChange));
+
+        var nextQuoteIndex = that.nextQuoteNumber();
+        var nextQuoteData = that.photoQuoteData[nextQuoteIndex];
+
+        $quoteContainer.fadeOut("fast", that.changeDataAndFadeIn($quoteContainer, nextQuoteData));
+        
+        that.currentQuotes[that.quoteNextChange] = nextQuoteIndex;
+        that.quoteNextChange = (that.quoteNextChange + 1) % 3;
+
+    };
+
+    this.cycleQuotes = function() {
+        that.changeOneQuote();
+
+        setTimeout(that.cycleQuotes, that.quoteChangeDelay);
+    };
+
     this.onReady = function() {
         $(window).scroll(that.bindHeaderScroll);
         $(window).mousemove(that.bindHeaderMouseOver);
@@ -247,6 +290,9 @@ var Scholars = Scholars || {};
         var photoScroller = Scholars.photoScroller();
         photoScroller.$scrollerContainer.find('.photo-scroller-control-left').click(photoScroller.fadeToPrev);
         photoScroller.$scrollerContainer.find('.photo-scroller-control-right').click(photoScroller.fadeToNext);
+
+        // Loop quote cycling
+        setTimeout(that.cycleQuotes, that.quoteChangeDelay);
     };
 
 }).call(Scholars, Scholars, jQuery, window, document);
