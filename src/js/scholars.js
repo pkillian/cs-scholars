@@ -220,6 +220,9 @@ var Scholars = Scholars || {};
         }
     ];
 
+    // Don't use certain quotes (picture issues, etc.)
+    this.blacklist = [3];
+
     this.currentQuotes = [2, 1, 9];
 
     this.changeDataAndFadeIn = function($container, data) {
@@ -247,15 +250,19 @@ var Scholars = Scholars || {};
         // Pick a random number between 0 and length of quote data
         var randPick = Math.floor(that.random() * that.photoQuoteData.length);
         var index = that.currentQuotes.indexOf(randPick);
+        var doNotUse = that.blacklist.indexOf(randPick);
 
-        while (index !== -1) {
+        // If the random pick is found in the current quote list
+        //   OR the random pick is blacklisted, increase by 1
+        while (index !== -1 || doNotUse !== -1) {
             randPick += 1;
 
-            if (randPick > that.currentQuotes.length) {
+            if (randPick >= that.photoQuoteData.length) {
                 randPick = 0;
             }
 
             index = that.currentQuotes.indexOf(randPick);
+            doNotUse = that.blacklist.indexOf(randPick);
         }
 
         return randPick;
