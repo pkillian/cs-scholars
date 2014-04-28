@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>CS Scholars :: UC Berkeley</title>
+    <title>CS Scholars :: Apply</title>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/css/main-light.min.css">
@@ -14,26 +14,7 @@
       $(document).ready(Scholars.onReady);
     </script>
 
-    <div id="header">
-      <div id="header-content">
-        <div id="header-nameplate">
-          <a href="/" id="header-nameplate-link">
-            <div id="header-nameplate-csscholars">
-              <span id="header-nameplate-cs">CS </span>
-              <span id="header-nameplate-scholars">Scholars</span>
-            </div>
-            <span id="header-nameplate-ucb">University of California, Berkeley</span>
-          </a>
-        </div>
-        <div id="header-rightlinks">
-          <a href="/about.html"><div class="header-button"><div class="button-div">About</div></div></a>
-          <a href="/donate.html"><div class="header-button"><div class="button-div">Donate</div></div></a>
-          <a href="/contact.html"><div class="header-button"><div class="button-div">Contact</div></div></a>
-          <a href="/apply.html"><div class="header-button"><div class="button-div">Apply</div></div></a>
-          <a href="http://eecs.berkeley.edu"><img id="header-logo" src="/img/head-eecs-logo.gif" /></a>
-        </div>
-      </div>
-    </div>
+    <!--#include virtual="./templates/header.html" -->
 
     <div id="wrapper">
       <div id="content" ng-view>
@@ -50,39 +31,7 @@
       </div>
     </div>
 
-    <div id="footer">
-      <div id="footer-thin">
-        <div class="overlay">
-          <div id="footer-thin-content">
-            <div class="col-div-thirds">
-              <div class="photo-quote">
-                <img class="photo-quote-img" />
-                <div class="photo-quote-caption"></div>
-                <div class="photo-quote-name"></div>
-              </div>
-            </div>
-            <div class="col-div-thirds">
-              <div class="photo-quote">
-                <img class="photo-quote-img" />
-                <span class="photo-quote-caption"></span>
-                <span class="photo-quote-name"></span>
-              </div>
-            </div>
-            <div class="col-div-thirds">
-              <div class="photo-quote">
-                <img class="photo-quote-img" />
-                <span class="photo-quote-caption"></span>
-                <span class="photo-quote-name"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="footer-content">
-        <div class="col-div-thirds"></div>
-        <div class="col-div-thirds"></div>
-        <div class="col-div-thirds"></div>
-      </div>
-    </div>
+    <!--#include virtual="./templates/footer.html" -->
+
   </body>
 </html>
