@@ -12,10 +12,6 @@ var Scholars = Scholars || {};
     this.photoScrollers = {};
     this.random = Math.random;
 
-    // Ten second delay on quote swapping
-    this.quoteChangeDelay = 10000;
-    this.quoteNextChange = 0;
-
     this.bindHeaderMouseOver = function(ev) {
         that.mousedOver = (ev.clientY <= that.headerHeight + 20);
 
@@ -220,10 +216,18 @@ var Scholars = Scholars || {};
         }
     ];
 
+
+    // Ten second delay on quote swapping
+    this.quoteChangeDelay = 10000;
+
+    // Which div to start changing first
+    this.quoteNextChange = 0;
+
     // Don't use certain quotes (picture issues, etc.)
     this.blacklist = [3];
 
-    this.currentQuotes = [2, 1, 9];
+    // Store the indexes of the currently shown quotes
+    this.currentQuotes = [];
 
     this.changeDataAndFadeIn = function($container, data) {
         return function() {
@@ -236,6 +240,11 @@ var Scholars = Scholars || {};
     };
 
     this.initQuotes = function() {
+        // Push three random quotes to the current quote list
+        that.currentQuotes.push(that.nextQuoteNumber());
+        that.currentQuotes.push(that.nextQuoteNumber());
+        that.currentQuotes.push(that.nextQuoteNumber());
+
         var $photoQuoteContainers = $('.photo-quote');
 
         for (var i = 0; i < 3; i++) {
