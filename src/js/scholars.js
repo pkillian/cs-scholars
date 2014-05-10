@@ -79,6 +79,9 @@ var Scholars = Scholars || {};
         // Not returned from cache? Init a new obj...
         var scrollObj = {};
 
+        // Ten second delay on photo swapping
+        scrollObj.photoChangeDelay = 10000;
+
         // If an ID is given, get that specific div
         if (idNum) {
             console.log('#photo-scroller-' + idNum);
@@ -135,6 +138,13 @@ var Scholars = Scholars || {};
             var $next = scrollObj.$getDiv(nextNum);
 
             scrollObj.fadeFromTo($current, $next, nextNum);
+        };
+
+        // Periodically scroll through photos
+        scrollObj.scrollPhotos = function() {
+            scrollObj.fadeToNext();
+
+            setTimeout(scrollObj.scrollPhotos, scrollObj.photoChangeDelay);
         };
 
         // Sets object into the cache for later retrieval
@@ -204,7 +214,7 @@ var Scholars = Scholars || {};
             "name":     "Sebastian Shanus",
             "grade":    "",
             "major":    "",
-            "caption":  "CS Scholars has been incredibly rewarding in helping me prepare to explore fun programming projects outside of the classroom and develop close friendships with other computer science students.",
+            "caption":  "CS Scholars has been incredibly rewarding in helping me explore fun programming projects outside of class and develop close friendships with other CS students.",
             "src":      "/img/quote-9.jpg"
         },
         {
@@ -304,8 +314,13 @@ var Scholars = Scholars || {};
         that.initQuotes();
 
         var photoScroller = Scholars.photoScroller();
-        photoScroller.$scrollerContainer.find('.photo-scroller-control-left').click(photoScroller.fadeToPrev);
-        photoScroller.$scrollerContainer.find('.photo-scroller-control-right').click(photoScroller.fadeToNext);
+
+        // Don't let photos switch on button click when they're scrolling
+        // photoScroller.$scrollerContainer.find('.photo-scroller-control-left').click(photoScroller.fadeToPrev);
+        // photoScroller.$scrollerContainer.find('.photo-scroller-control-right').click(photoScroller.fadeToNext);
+
+        // Loop photo cycling
+        setTimeout(photoScroller.scrollPhotos, photoScroller.photoChangeDelay);
 
         // Loop quote cycling
         setTimeout(that.cycleQuotes, that.quoteChangeDelay);

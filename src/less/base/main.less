@@ -31,11 +31,12 @@
 @content-row-height:                      auto;
 @content-row-width:                       @content-width - 20px;
 @content-row-bg-width:                    @content-width - 40px;
-@content-col-height:                      200px;
+@content-col-height:                      auto;
 @content-col-width:                       (@content-row-width - 20px) / 2; 
 @content-col-thirds-width:                (@content-row-width - 40px) / 3;
 @content-col-bg-width:                    (@content-row-bg-width - 20px) / 2;
 @content-col-bg-thirds-width:             (@content-row-bg-width - 40px) / 3;
+@content-col-bg-thirds-image-width:       ((@content-row-bg-width - 40px) / 3) - 20;
 @content-vertical-margin:                 60px;
 
 @content-div-background-color:            @style-black-1-3rd;
@@ -51,7 +52,7 @@
 @photo-scroller-control-bottom:           (@photo-scroller-height - @photo-scroller-control-height) / 2;
 
 // @footer-height:                           480px;
-@footer-height:                           180px;
+@footer-height:                           220px;
 @footer-min-width:                        @doc-width + 25px;
 @footer-content-height:                   280px;
 @footer-content-width:                    @doc-width;
@@ -62,10 +63,10 @@
 @footer-background-image:                 url('/img/bg-dirty-old-shirt.png');
 @footer-shadow-color:                     darken(@style-light-grey, 5%);
 
-@footer-thin-height:                      140px;
+@footer-thin-height:                      180px;
 @footer-thin-content-height:              @footer-thin-height - 40px;
-@footer-thin-content-width:               @doc-width;
-@footer-thin-content-col-height:          80px;
+@footer-thin-content-width:               @doc-width + 120px;
+@footer-thin-content-col-height:          120px;
 @footer-thin-content-col-width:           ((@footer-thin-content-width - 20px) / 2) - 20px;
 @footer-thin-content-col-thirds-width:    ((@footer-thin-content-width - 40px) / 3) - 20px;
 @footer-thin-photo-height:                @footer-thin-content-col-height;
@@ -421,6 +422,13 @@ a {
       width:  @content-col-bg-thirds-width;
 
       background-color: @content-inner-div-background-color;
+
+      .col-div-thirds-anchor {
+        margin: 10px;
+
+        height: @content-col-bg-thirds-image-width * (3 / 4);
+        width:  @content-col-bg-thirds-image-width;
+      }
     }
   }
 
@@ -683,16 +691,16 @@ a {
       float: left;
 
       font-weight: 400;
-      font-size:   10pt;
-      line-height: 11px;
+      font-size:   11pt;
+      line-height: 15px;
     }
 
     .photo-quote-name:before {
       content: "- ";
 
       font-weight: 400;
-      font-size:   11pt;
-      line-height: 11px;
+      font-size:   13pt;
+      line-height: 14px;
     }
 
     .photo-quote-name {
@@ -703,8 +711,8 @@ a {
       right: 0;
 
       font-weight: 500;
-      font-size:   11pt;
-      line-height: 11px;
+      font-size:   13pt;
+      line-height: 14px;
     }
   }
 }
