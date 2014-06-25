@@ -1,9 +1,6 @@
-# CS Scholars
+# [CS Scholars](http://cs-scholars.berkeley.edu/)
+
 ### University of California, Berkeley
-
-## Under Development
-
-Codebase is under active and early stages of development, and is not ready for deployment what-so-ever!
 
 ## Build Workflow
 
@@ -11,4 +8,13 @@ Codebase is under active and early stages of development, and is not ready for d
 - NPM (`brew install npm`)
 - Bower (`npm install -g bower`)
 - Grunt (`npm install -g grunt grunt-cli`)
+
+#### Grunt Commands
+- Build CSS from LESS
+    - `grunt less cssmin`
+- Build JS files
+    - `grunt quick`
+
+All must be run from `/build` directory  
+All other commands can be found in `/build/Gruntfile.js`
 
